@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — BCA Student &amp; Aspiring Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F7F5;
+    --surface:#FFFFFF;
+    --line:#DFE3DE;
+    --text:#1B211D;
+    --text-secondary:#5B655D;
+    --accent:#2F6E52;
+    --accent-soft:#E7F0EA;
+    --amber:#C8862B;
+    --radius:10px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
+  a{color:inherit; text-decoration:none;}
+
+  /* Nav */
+  nav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(246,247,245,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; justify-content:space-between; align-items:center; height:64px;}
+  .logo{font-family:'IBM Plex Mono', monospace; font-size:14px; font-weight:500; letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  .navlinks{display:flex; gap:28px; font-size:14px; color:var(--text-secondary);}
+  .navlinks a:hover{color:var(--accent);}
+
+  /* Hero */
+  header.hero{padding:100px 0 80px; border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    margin-bottom:18px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{
+    content:''; width:7px; height:7px; border-radius:50%;
+    background:var(--accent); display:inline-block;
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;} 50%{opacity:0.35;}
+  }
+  h1{
+    font-family:'Newsreader', serif;
+    font-weight:500;
+    font-size:clamp(38px, 6vw, 60px);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    max-width:780px;
+  }
+  h1 em{font-style:italic; color:var(--accent); font-weight:400;}
+  .hero p{
+    margin-top:24px;
+    font-size:18px;
+    color:var(--text-secondary);
+    max-width:560px;
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:999px;
+    font-size:14px; font-weight:600;
+    border:1px solid var(--line);
+    transition:all 0.15s ease;
+  }
+  .btn.primary{background:var(--text); color:var(--bg); border-color:var(--text);}
+  .btn.primary:hover{background:var(--accent); border-color:var(--accent);}
+  .btn.ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+  section{padding:72px 0; border-bottom:1px solid var(--line);}
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; color:var(--text-secondary);
+    text-transform:uppercase; letter-spacing:0.12em;
+    margin-bottom:36px;
+  }
+
+  /* Skills */
+  .skill-groups{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:28px;}
+  .skill-group h4{font-family:'Newsreader', serif; font-weight:500; font-size:19px; margin-bottom:12px;}
+  .pill-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .pill{
+    font-size:13px; padding:6px 13px; border-radius:999px;
+    background:var(--surface); border:1px solid var(--line); color:var(--text-secondary);
+  }
+
+  /* Projects */
+  .project-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px;
+    margin-bottom:20px;
+    transition:border-color 0.15s ease;
+  }
+  .project-card:hover{border-color:var(--accent);}
+  .project-head{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;}
+  .project-card h3{font-family:'Newsreader', serif; font-weight:500; font-size:22px;}
+  .project-tags{display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px; padding:3px 9px; border-radius:5px;
+    background:var(--accent-soft); color:var(--accent);
+  }
+  .project-card p{color:var(--text-secondary); margin-top:14px; font-size:15px; max-width:640px;}
+  .project-links{margin-top:16px; display:flex; gap:18px; font-size:13.5px; font-weight:600;}
+  .project-links a{color:var(--accent); display:flex; align-items:center; gap:6px;}
+  .project-links a:hover{text-decoration:underline;}
+
+  /* Build log - signature element: git-commit style timeline of real journey */
+  .log{font-family:'IBM Plex Mono', monospace; font-size:13.5px;}
+  .log-row{
+    display:grid; grid-template-columns:100px 90px 1fr;
+    gap:16px; padding:14px 0; border-top:1px dashed var(--line);
+    align-items:baseline;
+  }
+  .log-row:first-child{border-top:none;}
+  .log-date{color:var(--text-secondary);}
+  .log-hash{color:var(--amber);}
+  .log-msg{color:var(--text);}
+  .log-msg .branch{
+    display:inline-block; margin-left:8px; font-size:11px;
+    padding:2px 7px; border-radius:4px; background:var(--accent-soft); color:var(--accent);
+  }
+
+  /* Education */
+  .edu-row{display:flex; justify-content:space-between; padding:18px 0; border-top:1px solid var(--line);}
+  .edu-row:first-child{border-top:none;}
+  .edu-left h4{font-family:'Newsreader', serif; font-size:18px; font-weight:500;}
+  .edu-left p{color:var(--text-secondary); font-size:14px; margin-top:4px;}
+  .edu-right{color:var(--text-secondary); font-size:13.5px; font-family:'IBM Plex Mono', monospace; white-space:nowrap;}
+
+  /* Footer */
+  footer{padding:60px 0 80px;}
+  footer h2{font-family:'Newsreader', serif; font-size:32px; font-weight:500; margin-bottom:14px;}
+  footer p{color:var(--text-secondary); max-width:460px; margin-bottom:28px;}
+  .footer-links{display:flex; gap:16px; flex-wrap:wrap;}
+
+  @media (max-width:640px){
+    .log-row{grid-template-columns:1fr; gap:2px;}
+    .log-hash{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">your<span>name</span>.dev</div>
+    <div class="navlinks">
+      <a href="#projects">Projects</a>
+      <a href="#log">Journey</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Open to junior developer roles · Delhi NCR</div>
+    <h1>Building small, working things <em>on the way</em> to a developer role.</h1>
+    <p>BCA student at Manipal University Jaipur, learning by shipping — practical projects in Python, image processing, and data analysis, with Java and web fundamentals underneath.</p>
+    <div class="hero-ctas">
+      <a class="btn primary" href="#projects">View projects →</a>
+      <a class="btn ghost" href="mailto:your-email@example.com">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-label">01 — Skills</div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <div class="pill-row">
+          <span class="pill">Java</span>
+          <span class="pill">Python</span>
+          <span class="pill">C</span>
+          <span class="pill">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Web &amp; Tools</h4>
+        <div class="pill-row">
+          <span class="pill">HTML/CSS</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">Git &amp; GitHub</span>
+          <span class="pill">VS Code</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Data &amp; CV</h4>
+        <div class="pill-row">
+          <span class="pill">Pandas</span>
+          <span class="pill">OpenCV</span>
+          <span class="pill">Matplotlib</span>
+          <span class="pill">NumPy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-label">02 — Projects</div>
+
+    <div class="project-card">
+      <div class="project-head">
+        <h3>Retail Sales Data Analysis</h3>
+      </div>
+      <div class="project-tags">
+        <span class="tag">python</span>
+        <span class="tag">pandas</span>
+        <span class="tag">seaborn</span>
+        <span class="tag">data-analytics</span>
+      </div>
+      <p>Analyzes 2,000 retail transactions to surface business insights — top categories, regional revenue split, monthly trend, payment mode behavior, and how discounting affects average order value. Outputs a console report and five charts.</p>
+      <div class="project-links">
+        <a href="#">GitHub repo →</a>
+        <a href="#">Sample charts →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-head">
+        <h3>Fake Currency Note Detection</h3>
+      </div>
+      <div class="project-tags">
+        <span class="tag">python</span>
+        <span class="tag">opencv</span>
+        <span class="tag">image-processing</span>
+      </div>
+      <p>An academic image-processing tool that screens currency note images against four heuristics — size ratio, sharpness, color distribution, and edge density — and returns a confidence-scored verdict. Built to practice computer vision fundamentals.</p>
+      <div class="project-links">
+        <a href="#">GitHub repo →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-head">
+        <h3>Android Implicit Intent Demo</h3>
+      </div>
+      <div class="project-tags">
+        <span class="tag">java</span>
+        <span class="tag">android</span>
+      </div>
+      <p>A small Android app demonstrating implicit intents — a button tap hands off a URL to the system, which launches whichever browser the user has installed. Coursework project on Android fundamentals.</p>
+      <div class="project-links">
+        <a href="#">GitHub repo →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="log">
+  <div class="wrap">
+    <div class="section-label">03 — Journey so far</div>
+    <div class="log">
+      <div class="log-row">
+        <span class="log-date">2023</span>
+        <span class="log-hash">#a1c3e9</span>
+        <span class="log-msg">Started BCA at Manipal University Jaipur (online)<span class="branch">education</span></span>
+      </div>
+      <div class="log-row">
+        <span class="log-date">2025</span>
+        <span class="log-hash">#f02b71</span>
+        <span class="log-msg">Built first data analytics project in Python/Pandas<span class="branch">project</span></span>
+      </div>
+      <div class="log-row">
+        <span class="log-date">2025</span>
+        <span class="log-hash">#8d4c1a</span>
+        <span class="log-msg">Shipped OpenCV-based note detection project<span class="branch">project</span></span>
+      </div>
+      <div class="log-row">
+        <span class="log-date">2026</span>
+        <span class="log-hash">#3b9e6f</span>
+        <span class="log-msg">Started daily DSA practice ahead of placements<span class="branch">habit</span></span>
+      </div>
+      <div class="log-row">
+        <span class="log-date">Nov 2026</span>
+        <span class="log-hash">#pending</span>
+        <span class="log-msg">BCA completion — actively applying for junior developer roles<span class="branch">now</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-label">04 — Education</div>
+    <div class="edu-row">
+      <div class="edu-left">
+        <h4>Bachelor of Computer Applications (BCA)</h4>
+        <p>Manipal University Jaipur — Online Mode</p>
+      </div>
+      <div class="edu-right">2023 — Nov 2026</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's talk.</h2>
+    <p>Open to junior developer, technical support, and analyst roles across Delhi, Gurugram, and Noida. Reach out — I reply fast.</p>
+    <div class="footer-links">
+      <a class="btn primary" href="mailto:your-email@example.com">your-email@example.com</a>
+      <a class="btn ghost" href="https://github.com/YOUR_USERNAME" target="_blank">GitHub ↗</a>
+      <a class="btn ghost" href="https://linkedin.com/in/YOUR_PROFILE" target="_blank">LinkedIn ↗</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
